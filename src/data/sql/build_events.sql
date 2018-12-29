@@ -50,7 +50,7 @@ CREATE TABLE raw_events (
   first_runner VARCHAR(8) DEFAULT NULL,
   second_runner VARCHAR(8) DEFAULT NULL,
   third_runner VARCHAR(8) DEFAULT NULL,
-  event_text VARCHAR(250) NOT NULL,            -- Project Scoresheet format (approx) play description
+  event_text VARCHAR(250) NOT NULL,           -- Project Scoresheet format (approx) play description
   leadoff_flag enum_bool NOT NULL,            -- leadoff batter?
   pinchhit_flag enum_bool NOT NULL,           -- pinch hitter?
   defensive_position SMALLINT NOT NULL,       -- 0-9
@@ -118,5 +118,5 @@ CREATE TABLE raw_events (
   fielder_with_fourth_assist SMALLINT DEFAULT NULL,
   fielder_with_fifth_assist INT DEFAULT NULL,
   event_id SMALLINT NOT NULL,
-  PRIMARY KEY (game_id,event_id)
+  PRIMARY KEY (game_id, event_id, event_text, event_type)
 );

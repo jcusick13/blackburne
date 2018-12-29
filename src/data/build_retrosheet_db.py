@@ -30,9 +30,13 @@ class RetroEventFormatter():
         single year, cleans them, and adds them to a new
         database table.
         """
+        print('Downloading season\'s raw event files...')
         self.download_event_files()
+        print('Reformatting files for loading into database...')
         self.format_event_files()
+        print('Loading files into database table...')
         self.load_event_files()
+        print('Cleaning up...')
         self.cleanup()
 
     def download_event_files(self):
@@ -64,10 +68,12 @@ class RetroEventFormatter():
         """Creates a new table and loads a single
         years worth of event data to the database.
         """
+        print('Creating table schema...')
         with self.conn.cursor() as cursor:
             cursor.execute(open('src/data/sql/build_events.sql', 'r').read())
             self.conn.commit()
 
+        print('Adding to table from csv...')
         with open(f'{self.dir}/retro_event/all{self.year}.csv') as f:
             copy = 'COPY raw_events FROM STDIN WITH csv'
             self.conn.cursor().copy_expert(sql=copy, file=f)

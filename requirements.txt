@@ -12,7 +12,7 @@ jinja2-time==0.2.0
 kiwisolver==1.0.1
 MarkupSafe==1.1.0
 matplotlib==3.0.1
-numpy==1.15.4
+numpy==1.22.0
 pandas==0.23.4
 poyo==0.4.2
 psycopg2==2.7.6
